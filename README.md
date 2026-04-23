@@ -1,10 +1,11 @@
-# End-to-End Document Q&A RAG Application
+# Document Review - Simple RAG Q&A App
 
-Production-style Retrieval-Augmented Generation backend built with Python, FastAPI, LangChain, Groq API, and Gemma. It ingests documents, chunks them with context-aware metadata, stores embeddings in a persistent vector index, retrieves semantically relevant passages, and generates grounded answers with source citations.
+A simple local Retrieval-Augmented Generation app built with Python, FastAPI, Streamlit, LangChain, Groq API, and Gemma. Users can upload a PDF or document, index it, and ask questions based on the uploaded content.
 
 ## Features
 
 - Async FastAPI backend for document upload, ingestion, querying, and health checks
+- Simple Streamlit frontend for upload and Q&A
 - Modular RAG architecture with replaceable LLM, embedding, vector store, and loader layers
 - Groq-hosted Gemma model integration via `langchain-groq`
 - HuggingFace sentence-transformer embeddings
@@ -23,6 +24,7 @@ app/
   rag/              ingestion, chunking, retrieval, LLM, pipeline
   services/         application services
   utils/            shared helpers
+frontend/           Streamlit user interface
 data/
   uploads/          uploaded source documents
   indexes/          persistent vector indexes
@@ -41,7 +43,7 @@ Copy-Item .env.example .env
 
 Edit `.env` and set `GROQ_API_KEY`.
 
-Run the API:
+Run the FastAPI backend:
 
 ```powershell
 uvicorn app.main:app --reload
@@ -51,6 +53,24 @@ Open:
 
 - API docs: http://127.0.0.1:8000/docs
 - Health: http://127.0.0.1:8000/api/v1/health
+
+In a second terminal, run the Streamlit frontend:
+
+```powershell
+streamlit run frontend/streamlit_app.py
+```
+
+Open the Streamlit URL shown in the terminal, usually:
+
+- Frontend: http://localhost:8501
+
+## Recommended Local Workflow
+
+1. Start FastAPI with `uvicorn app.main:app --reload`.
+2. Start Streamlit with `streamlit run frontend/streamlit_app.py`.
+3. Upload a PDF, DOCX, TXT, or Markdown file.
+4. Click `Index document`.
+5. Ask a question and review the answer with sources.
 
 ## API Usage
 

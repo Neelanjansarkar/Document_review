@@ -3,6 +3,8 @@ uvicorn[standard]>=0.30.0
 pydantic-settings>=2.4.0
 python-multipart>=0.0.9
 aiofiles>=24.1.0
+streamlit>=1.37.0
+requests>=2.32.3
 
 langchain>=0.2.14
 langchain-community>=0.2.12

@@ -2,7 +2,7 @@
 
 ```mermaid
 flowchart LR
-    Client["Client / UI"] --> API["FastAPI routes"]
+    Client["Streamlit UI"] --> API["FastAPI routes"]
     API --> Service["DocumentService"]
     Service --> Loader["DocumentLoader"]
     Loader --> Chunker["ContextAwareChunker"]
@@ -16,6 +16,7 @@ flowchart LR
 ## Design Notes
 
 - `app/api` owns HTTP concerns only.
+- `frontend/streamlit_app.py` provides a lightweight local interface for uploads and questions.
 - `app/services` coordinates workflows such as upload, persistence, loading, chunking, and indexing.
 - `app/rag` owns retrieval and generation internals.
 - LLM and embedding providers are isolated behind small factory/client modules.
