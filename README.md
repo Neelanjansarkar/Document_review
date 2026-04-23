@@ -33,6 +33,8 @@ tests/              unit tests
 
 ## Local Setup
 
+You do not need Docker for this project. Run the backend and frontend directly with Python.
+
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -94,21 +96,4 @@ curl.exe -X POST "http://127.0.0.1:8000/api/v1/query" `
 ```powershell
 pytest
 ruff check .
-```
-
-## GitHub Push
-
-After creating an empty GitHub repository:
-
-```powershell
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git branch -M main
-git push -u origin main
-```
-
-If your GitHub account requires a token for HTTPS, use Git Credential Manager when prompted or use SSH:
-
-```powershell
-git remote set-url origin git@github.com:<your-username>/<repo-name>.git
-git push -u origin main
 ```
